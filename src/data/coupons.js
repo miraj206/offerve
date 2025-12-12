@@ -13,8 +13,15 @@ const generateCode = (storeName, type) => {
     return type === 'deal' ? 'View Offer' : `${prefix}${type.toUpperCase()}${suffix}`;
 };
 
+import { staticCoupons } from './staticCoupons';
+
 export const getStoreCoupons = (store) => {
     if (!store) return [];
+
+    // Check if we have static coupons for this store
+    if (staticCoupons[store.slug]) {
+        return staticCoupons[store.slug];
+    }
 
     const coupons = [];
     const discountTypes = ['Flat', 'Up to', 'Extra'];
@@ -61,4 +68,4 @@ export const getStoreCoupons = (store) => {
 };
 
 // Keep static export for backward compatibility if needed, or remove
-export const coupons = []; 
+export const coupons = [];

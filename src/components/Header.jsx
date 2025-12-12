@@ -105,7 +105,7 @@ const Header = () => {
             <nav className="nav-links">
               <a href="#coupons" className="nav-link">Coupons</a>
               <Link to="/stores" className="nav-link">Stores</Link>
-              <a href="#deals" className="nav-link">Deals</a>
+              <Link to="/deals" className="nav-link">Deals</Link>
             </nav>
           </div>
         </div>

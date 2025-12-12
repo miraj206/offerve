@@ -23,11 +23,11 @@ const Footer = () => {
             </div>
 
             <div className="footer-links">
-              <h4 className="footer-heading">Categories</h4>
-              <a href="#">Flight Coupons</a>
-              <a href="#">Food Delivery</a>
-              <a href="#">Fashion Deals</a>
-              <a href="#">Electronics</a>
+              <h4 className="footer-heading">Popular Stores</h4>
+              <Link to="/adda247-coupon-code">Adda247</Link>
+              <Link to="/unacademy-coupon-code">Unacademy</Link>
+              <Link to="/pw-coupon-code">Physics Wallah</Link>
+              <Link to="/stores">View All Stores</Link>
             </div>
 
             <div className="footer-newsletter">

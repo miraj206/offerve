@@ -4,7 +4,10 @@ import Home from './pages/Home';
 import Stores from './pages/Stores';
 import About from './pages/About';
 import StorePage from './pages/StorePage';
+
 import SearchResults from './pages/SearchResults';
+import Deals from './pages/Deals';
+import DealDetail from './pages/DealDetail';
 
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -17,6 +20,8 @@ function App() {
           <Route path="/stores" element={<Stores />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/about" element={<About />} />
+          <Route path="/deals" element={<Deals />} />
+          <Route path="/deals/:slug" element={<DealDetail />} />
           <Route path="/admin/analytics" element={<AdminDashboard />} />
           <Route path="/:slug" element={<StorePage />} />
         </Routes>

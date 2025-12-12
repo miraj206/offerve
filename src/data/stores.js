@@ -152,5 +152,44 @@ export const stores = [
         description: "Movie tickets and events with cashback and discounts.",
         bestOffers: "Buy 1 Get 1 Free (Cards)",
         faqs: []
+    },
+    {
+        id: 17,
+        name: "Adda247",
+        domain: "adda247.com",
+        slug: "adda247-coupon-code",
+        description: "Prepare for government exams like Banking, SSC, Railways, and Teaching with affordable courses and test series from Adda247.",
+        bestOffers: "Flat 17% to 77% Off",
+        faqs: [
+            { q: "How do I apply Adda247 promo codes?", a: "Select your desired course or pack, proceed to checkout, and look for the 'Have a Coupon Code' section. Enter the code and click Apply to get the discount." },
+            { q: "Are the coupon codes verified?", a: "Yes, all coupons listed on Offerve are verified manually to ensuring they are working and valid for the respective courses." },
+            { q: "How often are new offers added?", a: "We update our Adda247 coupons daily, checking for the latest seasonal sales, flash deals, and bank offers." }
+        ]
+    },
+    {
+        id: 18,
+        name: "Unacademy",
+        domain: "unacademy.com",
+        slug: "unacademy-coupon-code",
+        description: "Crack your dream exam with India's largest learning platform. Get live classes, structured batches, and mentorship for UPSC, IIT JEE, NEET, and more.",
+        bestOffers: "20% Off on Plus & Iconic",
+        faqs: [
+            { q: "Where can I find the latest Unacademy referral codes?", a: "You can find the most recent and verified Unacademy referral codes right here on Offerve, updated daily for maximum savings." },
+            { q: "Can I use codes for renewal?", a: "Most codes are for new subscriptions, but occasionally Unacademy releases offers for renewals. Check the coupon details for specific terms." },
+            { q: "Is there a free trial available?", a: "Yes, Unacademy often provides a 7-day free trial for new users to experience the Plus platform before subscribing." }
+        ]
+    },
+    {
+        id: 19,
+        name: "PW (Physics Wallah)",
+        domain: "pw.live",
+        slug: "pw-coupon-code",
+        description: "Quality education at the most affordable prices. Physics Wallah offers comprehensive batches for JEE, NEET, UPSC, GATE, and more.",
+        bestOffers: "Batches starting @ ₹999",
+        faqs: [
+            { q: "Does Physics Wallah offer discounts on batches?", a: "Yes, PW frequently runs offers on their popular batches like Yakeen, Lakshya, and Arjuna, especially during launch events and festivals." },
+            { q: "How to use the coupon code on PW App?", a: "Go to the 'Batch' section, click on 'Buy Now', and enter the coupon code in the 'Apply Coupon' field before making the payment." },
+            { q: "Are these codes applicable on offline centers?", a: "Generally, online codes are for app/website purchases. For offline centers (Vidyapeeth), check for specific registration offers listed as 'Offline' deals." }
+        ]
     }
 ];
