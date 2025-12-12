@@ -288,7 +288,54 @@ const Header = () => {
         }
 
         @media (max-width: 768px) {
-          .search-section, .nav-links, .divider {
+          .header {
+            height: auto;
+            padding: 1rem 0;
+          }
+
+          .header-wrapper {
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
+
+          .logo-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+
+          .search-section {
+            order: 2;
+            width: 100%;
+            max-width: 100%;
+            display: block; /* Force show */
+          }
+
+          .actions-section {
+            order: 3;
+            width: 100%;
+            justify-content: center;
+          }
+
+          .nav-links {
+            display: flex; /* Force show */
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            gap: 1rem;
+            justify-content: flex-start;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+          }
+          
+          .nav-link {
+            padding: 0.5rem 1rem;
+            background: #f1f5f9;
+            border-radius: 20px;
+            font-size: 0.85rem;
+          }
+
+          .divider {
             display: none;
           }
         }

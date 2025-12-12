@@ -349,7 +349,7 @@ const CouponCard = ({ merchant, id, title, description, verified, code, ribbon, 
             transform: translateY(-2px);
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .card-body {
                 flex-direction: column;
                 gap: 0.8rem;
@@ -357,11 +357,14 @@ const CouponCard = ({ merchant, id, title, description, verified, code, ribbon, 
             .logo-column {
                 margin-bottom: 0.2rem;
             }
+            .content-column {
+                width: 100%;
+            }
             .code-action-row {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .copy-btn { width: 100%; }
+            .copy-btn, .deal-btn { width: 100%; }
         }
       `}</style>
     </div>

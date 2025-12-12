@@ -283,6 +283,17 @@ const TopSection = () => {
                         margin-top: 2rem;
                     }
                 }
+
+                @media (max-width: 768px) {
+                    .offers-grid {
+                        grid-template-columns: 1fr; /* Ensure offers stack */
+                    }
+                    .block-header {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                    }
+                }
             `}</style>
         </section>
     );

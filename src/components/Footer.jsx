@@ -71,9 +71,10 @@ const Footer = () => {
           }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
           .footer-grid {
             grid-template-columns: 1fr;
+            gap: 2rem;
           }
         }
 

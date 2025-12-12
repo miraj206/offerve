@@ -241,27 +241,20 @@ const Hero = () => {
           pointer-events: none;
         }
 
-        @media (max-width: 640px) {
-          .banner-carousel {
-            height: 150px;
-          }
-          
-          .main-search {
-            flex-direction: column;
-          }
-          
-          .hero-search-btn {
-            padding: 1rem;
-            width: 100%;
-          }
+          @media (max-width: 768px) {
+            .hero-title {
+              font-size: 1.8rem;
+              padding: 0 1rem;
+            }
 
-          .hero-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-            color: var(--text-main);
-            padding: 0 1rem;
+            .main-search {
+              flex-direction: column;
+            }
+            
+            .hero-search-btn {
+              width: 100%;
+              padding: 1rem;
+            }
           }
 
           @media (min-width: 768px) {
