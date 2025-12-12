@@ -5,6 +5,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    {console.log('App Version: SuperMoney-v2 (Checking Deployment)')}
     <App />
   </StrictMode>,
 )
