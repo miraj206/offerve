@@ -193,3 +193,5 @@ export const stores = [
         ]
     }
 ];
+
+// Force deployment update: 2025-12-14
