@@ -15,6 +15,7 @@ const About = () => {
         if (metaDescription) {
             metaDescription.setAttribute('content', 'Learn about Offerve, the leading destination for verified coupons, promo codes, and exclusive deals in India. Discover how we help millions save money daily.');
         }
+        window.scrollTo(0, 0);
     }, []);
 
     const faqList = [
@@ -31,106 +32,92 @@ const About = () => {
     return (
         <div className="about-page">
             <Header />
-            <main style={{ minHeight: '100vh', background: 'var(--bg-light)', fontFamily: 'var(--font-main, sans-serif)' }}>
+            <main className="about-main">
 
                 {/* Hero Section */}
-                <section className="hero-section" style={{ background: 'linear-gradient(135deg, var(--bg-main) 0%, #ffffff 100%)', padding: '5rem 1.5rem', textAlign: 'center' }}>
-                    <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
-                        <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1.5rem', color: 'var(--text-main)', letterSpacing: '-1px' }}>
-                            We're on a Mission to <br /><span style={{ color: 'var(--primary)' }}>Democratize Savings</span>
+                <section className="about-hero">
+                    <div className="container hero-container">
+                        <h1>
+                            We're on a Mission to <br /><span>Democratize Savings</span>
                         </h1>
-                        <p style={{ fontSize: '1.25rem', color: 'var(--text-gray)', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto' }}>
+                        <p>
                             Offerve is India's fastest-growing destination for smart shoppers. We combine cutting-edge technology with human verification to bring you thousands of active deals every single day.
                         </p>
                     </div>
                 </section>
 
                 {/* Stats Section */}
-                <section style={{ padding: '0 1.5rem', marginTop: '-3rem' }}>
-                    <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+                <section className="stats-section">
+                    <div className="container stats-grid">
                         {[
                             { label: "Active Coupons", value: "50,000+" },
                             { label: "Partner Stores", value: "2,500+" },
                             { label: "Happy Users", value: "1M+" },
                             { label: "Daily Updates", value: "24/7" }
                         ].map((stat, idx) => (
-                            <div key={idx} style={{ background: 'white', padding: '2rem', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', textAlign: 'center' }}>
-                                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', marginBottom: '0.5rem' }}>{stat.value}</div>
-                                <div style={{ fontSize: '1rem', color: 'var(--text-gray)', fontWeight: '600' }}>{stat.label}</div>
+                            <div key={idx} className="stat-card">
+                                <div className="stat-value">{stat.value}</div>
+                                <div className="stat-label">{stat.label}</div>
                             </div>
                         ))}
                     </div>
                 </section>
 
                 {/* Detailed Content */}
-                <section className="content-section" style={{ padding: '5rem 1.5rem' }}>
-                    <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+                <section className="content-section">
+                    <div className="container content-container">
 
-                        <div style={{ marginBottom: '4rem' }}>
-                            <h2 style={{ fontSize: '2.2rem', marginBottom: '1.5rem', color: 'var(--text-main)', borderBottom: '2px solid var(--primary-light, #eee)', paddingBottom: '0.5rem', display: 'inline-block' }}>Who We Are</h2>
-                            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-body)', marginBottom: '1rem' }}>
+                        <div className="text-block">
+                            <h2>Who We Are</h2>
+                            <p>
                                 Founded with a simple yet powerful idea, <strong>Offerve</strong> started as a small project to help friends find working promo codes. Today, it has evolved into a comprehensive savings platform trust by millions.
                             </p>
-                            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-body)' }}>
+                            <p>
                                 In a digital age where online shopping is the norm, finding a working discount code shouldn't feel like finding a needle in a haystack. That's why we built Offerve – a platform that prioritizes <strong>accuracy, transparency, and ease of use</strong>. We are a team of deal hunters, tech enthusiasts, and savings experts dedicated to keeping money in your pocket.
                             </p>
                         </div>
 
-                        <div style={{ marginBottom: '4rem' }}>
-                            <h2 style={{ fontSize: '2.2rem', marginBottom: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>How We Work</h2>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+                        <div className="how-it-works">
+                            <h2>How We Work</h2>
+                            <div className="steps-grid">
                                 {[
                                     { title: "1. We Hunt", desc: "Our automated algorithms and expert team scan the web 24/7 to find the latest offers from top brands." },
                                     { title: "2. We Verify", desc: "We don't just post anything. Every coupon is manually tested to ensure it actually works at checkout." },
                                     { title: "3. You Save", desc: "We organize deals clearly, so you can copy a code and apply it in seconds, saving money instantly." }
                                 ].map((step, idx) => (
-                                    <div key={idx} style={{ background: '#f8f9fa', padding: '2rem', borderRadius: '12px', border: '1px solid #eee' }}>
-                                        <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', fontSize: '1.4rem' }}>{step.title}</h3>
-                                        <p style={{ color: 'var(--text-body)', lineHeight: '1.6' }}>{step.desc}</p>
+                                    <div key={idx} className="step-card">
+                                        <h3>{step.title}</h3>
+                                        <p>{step.desc}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         {/* Categories SEO Text */}
-                        <div style={{ marginBottom: '4rem' }}>
-                            <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--text-main)' }}>Your One-Stop Shop for Everything</h2>
-                            <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--text-body)' }}>
+                        <div className="text-block">
+                            <h2>Your One-Stop Shop for Everything</h2>
+                            <p>
                                 Whether you are looking to upgrade your wardrobe with the latest <strong>Fashion</strong> trends from Myntra and Ajio, ordering delicious meals from <strong>Food Delivery</strong> giants like Swiggy and Zomato, or booking your next vacation via <strong>Travel</strong> portals like MakeMyTrip, Offerve has you covered. We also feature extensive deals for <strong>Electronics</strong>, <strong>Beauty</strong>, <strong>Hosting</strong>, and <strong>Education</strong> platforms.
                             </p>
                         </div>
 
                         {/* FAQ Section with Accordion */}
-                        <div>
-                            <h2 style={{ fontSize: '2.2rem', marginBottom: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>Frequently Asked Questions</h2>
-                            <div style={{ display: 'grid', gap: '1rem' }}>
+                        <div className="faq-section">
+                            <h2>Frequently Asked Questions</h2>
+                            <div className="faq-grid">
                                 {faqList.map((faq, idx) => (
                                     <div
                                         key={idx}
                                         onClick={() => toggleFaq(idx)}
-                                        style={{
-                                            borderBottom: '1px solid #eee',
-                                            padding: '1.5rem',
-                                            background: openFaq === idx ? '#f8f9fa' : 'white',
-                                            borderRadius: '8px',
-                                            cursor: 'pointer',
-                                            transition: 'background 0.3s ease'
-                                        }}
+                                        className={`faq-item ${openFaq === idx ? 'active' : ''}`}
                                     >
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <h3 style={{ fontSize: '1.15rem', margin: 0, color: 'var(--text-main)', fontWeight: '600' }}>{faq.q}</h3>
-                                            <span style={{
-                                                fontSize: '1.5rem',
-                                                color: 'var(--primary)',
-                                                lineHeight: '1',
-                                                transform: openFaq === idx ? 'rotate(45deg)' : 'rotate(0deg)',
-                                                transition: 'transform 0.3s ease',
-                                                display: 'inline-block'
-                                            }}>+</span>
+                                        <div className="faq-header">
+                                            <h3>{faq.q}</h3>
+                                            <span className="faq-icon">+</span>
                                         </div>
                                         {openFaq === idx && (
-                                            <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(0,0,0,0.05)', animation: 'fadeIn 0.3s ease' }}>
-                                                <p style={{ color: 'var(--text-gray)', lineHeight: '1.6', margin: 0 }}>{faq.a}</p>
+                                            <div className="faq-answer">
+                                                <p>{faq.a}</p>
                                             </div>
                                         )}
                                     </div>
@@ -139,11 +126,11 @@ const About = () => {
                         </div>
 
                         {/* CTA Section */}
-                        <section style={{ background: 'var(--primary)', padding: '4rem 1.5rem', textAlign: 'center', color: 'white', borderRadius: '16px', marginTop: '4rem' }}>
-                            <div className="container" style={{ maxWidth: '700px', margin: '0 auto' }}>
-                                <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Ready to Start Saving?</h2>
-                                <p style={{ fontSize: '1.2rem', marginBottom: '2rem', opacity: '0.9' }}>Join massive community of smart shoppers and never pay full price again.</p>
-                                <a href="/" style={{ display: 'inline-block', background: 'white', color: 'var(--primary)', padding: '1rem 2.5rem', fontSize: '1.2rem', fontWeight: 'bold', borderRadius: '50px', textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>
+                        <section className="cta-section">
+                            <div className="container">
+                                <h2>Ready to Start Saving?</h2>
+                                <p>Join massive community of smart shoppers and never pay full price again.</p>
+                                <a href="/" className="cta-btn">
                                     Browse Today's Top Deals
                                 </a>
                             </div>
@@ -154,6 +141,320 @@ const About = () => {
 
             </main>
             <Footer />
+
+            <style>{`
+                /* Base Styles */
+                .about-main {
+                    min-height: 100vh;
+                    background: var(--bg-light);
+                    font-family: var(--font-main, sans-serif);
+                }
+
+                .container {
+                    padding: 0 1.5rem;
+                    margin: 0 auto;
+                }
+
+                /* Hero Section */
+                .about-hero {
+                    background: linear-gradient(135deg, var(--bg-main) 0%, #ffffff 100%);
+                    padding: 5rem 1.5rem;
+                    text-align: center;
+                }
+
+                .hero-container {
+                    max-width: 900px;
+                }
+
+                .about-hero h1 {
+                    font-size: 3rem;
+                    font-weight: 800;
+                    margin-bottom: 1.5rem;
+                    color: var(--text-main);
+                    letter-spacing: -1px;
+                }
+
+                .about-hero h1 span {
+                    color: var(--primary);
+                }
+
+                .about-hero p {
+                    font-size: 1.25rem;
+                    color: var(--text-gray);
+                    line-height: 1.6;
+                    max-width: 700px;
+                    margin: 0 auto;
+                }
+
+                /* Stats Section */
+                .stats-section {
+                    margin-top: -3rem;
+                    padding-bottom: 2rem;
+                }
+
+                .stats-grid {
+                    max-width: 1000px;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 2rem;
+                }
+
+                .stat-card {
+                    background: white;
+                    padding: 2rem;
+                    border-radius: 16px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                    text-align: center;
+                    transition: transform 0.3s ease;
+                }
+                
+                .stat-card:hover {
+                    transform: translateY(-5px);
+                }
+
+                .stat-value {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                }
+
+                .stat-label {
+                    font-size: 1rem;
+                    color: var(--text-gray);
+                    font-weight: 600;
+                }
+
+                /* Content Section */
+                .content-section {
+                    padding: 5rem 0;
+                }
+
+                .content-container {
+                    max-width: 900px;
+                }
+
+                .text-block {
+                    margin-bottom: 4rem;
+                }
+
+                .text-block h2 {
+                    font-size: 2.2rem;
+                    margin-bottom: 1.5rem;
+                    color: var(--text-main);
+                    border-bottom: 2px solid var(--primary-light, #eee);
+                    padding-bottom: 0.5rem;
+                    display: inline-block;
+                }
+
+                .text-block p {
+                    font-size: 1.1rem;
+                    line-height: 1.8;
+                    color: var(--text-body);
+                    margin-bottom: 1rem;
+                }
+
+                /* How It Works */
+                .how-it-works {
+                    margin-bottom: 4rem;
+                }
+
+                .how-it-works h2, .faq-section h2 {
+                    font-size: 2.2rem;
+                    margin-bottom: 2rem;
+                    color: var(--text-main);
+                    text-align: center;
+                }
+
+                .steps-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 2rem;
+                }
+
+                .step-card {
+                    background: #f8f9fa;
+                    padding: 2rem;
+                    border-radius: 12px;
+                    border: 1px solid #eee;
+                }
+
+                .step-card h3 {
+                    margin-bottom: 1rem;
+                    color: var(--primary);
+                    font-size: 1.4rem;
+                }
+
+                .step-card p {
+                    color: var(--text-body);
+                    line-height: 1.6;
+                }
+
+                /* FAQ Section */
+                .faq-grid {
+                    display: grid;
+                    gap: 1rem;
+                }
+
+                .faq-item {
+                    border-bottom: 1px solid #eee;
+                    padding: 1.5rem;
+                    background: white;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: background 0.3s ease;
+                }
+
+                .faq-item.active {
+                    background: #f8f9fa;
+                }
+
+                .faq-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .faq-header h3 {
+                    font-size: 1.15rem;
+                    margin: 0;
+                    color: var(--text-main);
+                    font-weight: 600;
+                }
+
+                .faq-icon {
+                    font-size: 1.5rem;
+                    color: var(--primary);
+                    line-height: 1;
+                    transition: transform 0.3s ease;
+                    display: inline-block;
+                }
+                
+                .faq-item.active .faq-icon {
+                    transform: rotate(45deg);
+                }
+
+                .faq-answer {
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid rgba(0,0,0,0.05);
+                    animation: fadeIn 0.3s ease;
+                }
+
+                .faq-answer p {
+                    color: var(--text-gray);
+                    line-height: 1.6;
+                    margin: 0;
+                }
+
+                /* CTA Section */
+                .cta-section {
+                    background: var(--primary);
+                    padding: 4rem 1.5rem;
+                    text-align: center;
+                    color: white;
+                    border-radius: 16px;
+                    margin-top: 4rem;
+                }
+
+                .cta-section h2 {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                }
+
+                .cta-section p {
+                    font-size: 1.2rem;
+                    margin-bottom: 2rem;
+                    opacity: 0.9;
+                }
+
+                .cta-btn {
+                    display: inline-block;
+                    background: white;
+                    color: var(--primary);
+                    padding: 1rem 2.5rem;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    transition: transform 0.2s;
+                }
+
+                .cta-btn:hover {
+                    transform: scale(1.05);
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(-10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+                /* MOBILE RESPONSIVE STYLES */
+                @media (max-width: 900px) {
+                    .stats-grid, .steps-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    .about-hero {
+                        padding: 3rem 1rem;
+                    }
+                    
+                    .about-hero h1 {
+                        font-size: 2rem;
+                    }
+
+                    .stats-section {
+                        margin-top: 0;
+                    }
+
+                    .stats-grid {
+                        grid-template-columns: 1fr;
+                        padding: 0 1rem;
+                        gap: 1rem;
+                    }
+                    
+                    .stat-card {
+                        padding: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        text-align: left;
+                    }
+                    
+                    .stat-value {
+                        margin-bottom: 0;
+                        font-size: 1.8rem;
+                    }
+
+                    .content-section {
+                        padding: 3rem 0;
+                    }
+
+                    .steps-grid {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .text-block h2, .how-it-works h2, .faq-section h2, .cta-section h2 {
+                        font-size: 1.8rem;
+                    }
+
+                    .cta-section {
+                        padding: 3rem 1rem;
+                        border-radius: 0;
+                        margin-left: -1.5rem;
+                        margin-right: -1.5rem;
+                        width: calc(100% + 3rem);
+                    }
+                    
+                    .cta-btn {
+                         width: 100%;
+                         padding: 1rem;
+                    }
+                }
+            `}</style>
         </div>
     );
 };
