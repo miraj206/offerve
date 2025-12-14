@@ -7,7 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ErrorBoundary>
-      {console.log('App Version: HashRouter + ErrorBoundary v1')}
+      {console.log('App Version: BrowserRouter + Clean URLs')}
       <App />
     </ErrorBoundary>
   </StrictMode>,
