@@ -240,7 +240,7 @@ Please change the parent <Route path="${V}"> to <Route path="${V==="/"?"*":`${V}
             display: none;
           }
         }
-      `})]})},mv=()=>{const[r,o]=T.useState(0),c=[1,2,3,4];return T.useEffect(()=>{const u=setInterval(()=>{o(f=>(f+1)%c.length)},5e3);return()=>clearInterval(u)},[c.length]),s.jsxs("section",{className:"hero",children:[s.jsx("div",{className:"container",children:s.jsxs("div",{className:"hero-content",children:[s.jsx("h1",{className:"hero-title",children:"Save Big with India’s Best Coupons, Promo Codes & Online Deals"}),s.jsxs("div",{className:"banner-carousel",children:[s.jsx("div",{className:"banner-track",style:{transform:`translateX(-${r*100}%)`},children:c.map((u,f)=>s.jsx("div",{className:"banner-slide",children:s.jsx("div",{className:`hero-banner banner-${u}`,children:s.jsxs("span",{className:"banner-placeholder-text",children:["Banner ",u," Space"]})})},u))}),s.jsx("div",{className:"banner-dots",children:c.map((u,f)=>s.jsx("button",{className:`dot ${r===f?"active":""}`,onClick:()=>o(f),"aria-label":`Go to banner ${f+1}`},f))})]}),s.jsxs("div",{className:"search-container",children:[s.jsxs("div",{className:"main-search",children:[s.jsx("input",{type:"text",placeholder:"Search for a brand... (e.g. Uber, Amazon, Dominos)",className:"hero-input"}),s.jsx("button",{className:"hero-search-btn",children:"Search"})]}),s.jsxs("div",{className:"popular-tags",children:[s.jsx("span",{className:"tag-label",children:"Trending:"}),s.jsx("a",{href:"#",className:"tag",children:"Recharge"}),s.jsx("a",{href:"#",className:"tag",children:"Fashion"}),s.jsx("a",{href:"#",className:"tag",children:"Electronics"}),s.jsx("a",{href:"#",className:"tag",children:"Travel"}),s.jsx("a",{href:"#",className:"tag",children:"Food"})]})]})]})}),s.jsx("div",{className:"hero-bg"}),s.jsx("style",{children:`
+      `})]})},mv=()=>{const[r,o]=T.useState(0),c=[1,2,3,4];return T.useEffect(()=>{const u=setInterval(()=>{o(f=>(f+1)%c.length)},5e3);return()=>clearInterval(u)},[c.length]),s.jsxs("section",{className:"hero",children:[s.jsx("div",{className:"container",children:s.jsxs("div",{className:"hero-content",children:[s.jsx("h1",{className:"hero-title",children:"Save Big with India’s Best Coupons, Promo Codes & Online Deals"}),s.jsxs("div",{className:"banner-carousel",children:[s.jsx("div",{className:"banner-track",style:{transform:`translateX(-${r*100}%)`},children:c.map((u,f)=>s.jsx("div",{className:"banner-slide",children:s.jsx("div",{className:`hero-banner banner-${u}`,children:s.jsxs("span",{className:"banner-placeholder-text",children:["Banner ",u," Space"]})})},u))}),s.jsx("div",{className:"banner-dots",children:c.map((u,f)=>s.jsx("button",{className:`dot ${r===f?"active":""}`,onClick:()=>o(f),"aria-label":`Go to banner ${f+1}`},f))})]})]})}),s.jsx("div",{className:"hero-bg"}),s.jsx("style",{children:`
         .hero {
           padding: 40px 0 60px;
           position: relative;
@@ -328,74 +328,7 @@ Please change the parent <Route path="${V}"> to <Route path="${V==="/"?"*":`${V}
           transform: scale(1.2);
         }
 
-        .search-container {
-          background: rgba(255, 255, 255, 0.6);
-          padding: 2rem;
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-lg);
-        }
 
-        .main-search {
-          display: flex;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .hero-input {
-          flex: 1;
-          background: white;
-          border: 1px solid rgba(0,0,0,0.1);
-          padding: 1rem 1.5rem;
-          border-radius: var(--radius-md);
-          color: var(--text-main);
-          font-size: 1.1rem;
-          outline: none;
-          transition: var(--transition);
-        }
-
-        .hero-input:focus {
-          border-color: var(--primary);
-          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .hero-search-btn {
-          background: var(--primary);
-          color: white;
-          padding: 0 2rem;
-          font-size: 1rem;
-          font-weight: 600;
-          border-radius: var(--radius-md);
-          transition: var(--transition);
-        }
-
-        .hero-search-btn:hover {
-          background: var(--primary-hover);
-        }
-
-        .popular-tags {
-          display: flex;
-          justify-content: center;
-          gap: 0.8rem;
-          flex-wrap: wrap;
-          font-size: 0.9rem;
-        }
-
-        .tag-label {
-          color: var(--text-muted);
-        }
-
-        .tag {
-          color: var(--text-main);
-          border-bottom: 1px dashed var(--text-muted);
-          transition: var(--transition);
-        }
-
-        .tag:hover {
-          color: var(--primary);
-          border-color: var(--primary);
-        }
 
         .hero-bg {
           position: absolute;
