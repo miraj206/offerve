@@ -8,6 +8,7 @@ import SearchResults from './pages/SearchResults';
 import Deals from './pages/Deals';
 import DealDetail from './pages/DealDetail';
 import SubmitCoupon from './pages/SubmitCoupon';
+import Contact from './pages/Contact';
 
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/deals" element={<Deals />} />
           <Route path="/deals/:slug" element={<DealDetail />} />
           <Route path="/submit-coupon" element={<SubmitCoupon />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/admin/analytics" element={<AdminDashboard />} />
           <Route path="/:slug" element={<StorePage />} />
         </Routes>

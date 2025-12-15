@@ -24,7 +24,7 @@ const Footer = () => {
                 <h4 className="footer-heading">Company</h4>
                 <Link to="/about">About Us</Link>
                 <Link to="/submit-coupon">Submit Coupon</Link>
-                <a href="#">Contact</a>
+                <Link to="/contact">Contact</Link>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Use</a>
               </div>
