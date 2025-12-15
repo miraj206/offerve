@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import analytics from '../services/analytics';
+import { submissionService } from '../services/submissions';
 
 const AdminDashboard = () => {
     console.log("AdminDashboard Component Mounting...");
@@ -10,15 +11,22 @@ const AdminDashboard = () => {
     const [coupons, setCoupons] = useState([]);
     const [stores, setStores] = useState([]);
     const [events, setEvents] = useState([]);
+    const [submissions, setSubmissions] = useState([]);
     const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         setCoupons(analytics.getAllCouponsWithMetrics());
         setStores(analytics.getStoreMetrics());
         setEvents(analytics.getEventsLog());
+        setSubmissions(submissionService.getAll());
     }, [refresh]);
 
     const handleRefresh = () => setRefresh(prev => prev + 1);
+
+    const handleStatusUpdate = (id, status) => {
+        submissionService.updateStatus(id, status);
+        handleRefresh();
+    };
 
     const handleReset = () => {
         if (window.confirm("Are you sure? This will wipe all analytics data.")) {
@@ -41,6 +49,7 @@ const AdminDashboard = () => {
 
                 <div className="admin-tabs">
                     <button className={activeTab === 'overview' ? 'active' : ''} onClick={() => setActiveTab('overview')}>Overview</button>
+                    <button className={activeTab === 'submissions' ? 'active' : ''} onClick={() => setActiveTab('submissions')}>Submissions ({submissions.filter(s => s.status === 'Pending').length})</button>
                     <button className={activeTab === 'coupons' ? 'active' : ''} onClick={() => setActiveTab('coupons')}>Top Coupons</button>
                     <button className={activeTab === 'stores' ? 'active' : ''} onClick={() => setActiveTab('stores')}>Store Performance</button>
                     <button className={activeTab === 'export' ? 'active' : ''} onClick={() => setActiveTab('export')}>Export & Snapshot</button>
@@ -49,6 +58,10 @@ const AdminDashboard = () => {
                 <div className="admin-content">
                     {activeTab === 'overview' && (
                         <div className="overview-grid">
+                            <div className="stat-card">
+                                <h3>Pending Submissions</h3>
+                                <p className="stat-value">{submissions.filter(s => s.status === 'Pending').length}</p>
+                            </div>
                             <div className="stat-card">
                                 <h3>Total Events</h3>
                                 <p className="stat-value">{events.length}</p>
@@ -74,6 +87,57 @@ const AdminDashboard = () => {
                                     ))}
                                 </ul>
                             </div>
+                        </div>
+                    )}
+
+                    {activeTab === 'submissions' && (
+                        <div className="table-responsive">
+                            <table className="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>User</th>
+                                        <th>Type</th>
+                                        <th>Store</th>
+                                        <th>Details</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {submissions.length === 0 && <tr><td colspan="7">No submissions yet.</td></tr>}
+                                    {submissions.map((s) => (
+                                        <tr key={s.id}>
+                                            <td>{new Date(s.submittedAt).toLocaleDateString()}</td>
+                                            <td>
+                                                {s.name || 'Anonymous'}<br />
+                                                <small>{s.email}</small>
+                                            </td>
+                                            <td><span className="tag view">{s.type}</span></td>
+                                            <td>{s.storeName}</td>
+                                            <td>
+                                                <strong>{s.code}</strong><br />
+                                                <span className="truncate" title={s.description}>{s.description}</span>
+                                            </td>
+                                            <td>
+                                                <span className={`tag ${s.status === 'Approved' ? 'click' : s.status === 'Rejected' ? 'copy' : 'view'}`}
+                                                    style={s.status === 'Pending' ? { background: '#fef3c7', color: '#d97706' } : {}}>
+                                                    {s.status}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                {s.status === 'Pending' && (
+                                                    <div className="btn-group">
+                                                        <button onClick={() => handleStatusUpdate(s.id, 'Approved')} className="btn-small btn-primary">Approve</button>
+                                                        <button onClick={() => handleStatusUpdate(s.id, 'Rejected')} className="btn-small btn-danger">Reject</button>
+                                                    </div>
+                                                )}
+                                                {s.status !== 'Pending' && <span>-</span>}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     )}
 

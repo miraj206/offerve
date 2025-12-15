@@ -1,54 +1,61 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import SubmitPrompt from './SubmitPrompt';
 
 const Footer = () => {
+  const location = useLocation();
+  const hidePrompt = location.pathname === '/submit-coupon';
+
   return (
-    <footer className="footer">
-      <div className="footer-top">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-brand">
-              <a href="/" className="footer-logo">Offerve</a>
-              <p className="footer-desc">
-                Offerve is your ultimate destination for the best coupons, deals, and offers from top online stores. Save money on every purchase.
-              </p>
-            </div>
+    <>
+      {!hidePrompt && <SubmitPrompt />}
+      <footer className="footer">
+        <div className="footer-top">
+          <div className="container">
+            <div className="footer-grid">
+              <div className="footer-brand">
+                <a href="/" className="footer-logo">Offerve</a>
+                <p className="footer-desc">
+                  Offerve is your ultimate destination for the best coupons, deals, and offers from top online stores. Save money on every purchase.
+                </p>
+              </div>
 
-            <div className="footer-links">
-              <h4 className="footer-heading">Company</h4>
-              <Link to="/about">About Us</Link>
-              <a href="#">Contact</a>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Use</a>
-            </div>
+              <div className="footer-links">
+                <h4 className="footer-heading">Company</h4>
+                <Link to="/about">About Us</Link>
+                <Link to="/submit-coupon">Submit Coupon</Link>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+              </div>
 
-            <div className="footer-links">
-              <h4 className="footer-heading">Popular Stores</h4>
-              <Link to="/adda247-coupon-code">Adda247</Link>
-              <Link to="/unacademy-coupon-code">Unacademy</Link>
-              <Link to="/pw-coupon-code">Physics Wallah</Link>
-              <Link to="/stores">View All Stores</Link>
-            </div>
+              <div className="footer-links">
+                <h4 className="footer-heading">Popular Stores</h4>
+                <Link to="/adda247-coupon-code">Adda247</Link>
+                <Link to="/unacademy-coupon-code">Unacademy</Link>
+                <Link to="/pw-coupon-code">Physics Wallah</Link>
+                <Link to="/stores">View All Stores</Link>
+              </div>
 
-            <div className="footer-newsletter">
-              <h4 className="footer-heading">Stay Updated</h4>
-              <p className="newsletter-text">Subscribe to get the handpicked deals in your inbox.</p>
-              <div className="newsletter-form">
-                <input type="email" placeholder="Enter your email" />
-                <button>Subscribe</button>
+              <div className="footer-newsletter">
+                <h4 className="footer-heading">Stay Updated</h4>
+                <p className="newsletter-text">Subscribe to get the handpicked deals in your inbox.</p>
+                <div className="newsletter-form">
+                  <input type="email" placeholder="Enter your email" />
+                  <button>Subscribe</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="footer-bottom">
-        <div className="container">
-          <p>&copy; {new Date().getFullYear()} Offerve. All rights reserved.</p>
+        <div className="footer-bottom">
+          <div className="container">
+            <p>&copy; {new Date().getFullYear()} Offerve. All rights reserved.</p>
+          </div>
         </div>
-      </div>
 
-      <style>{`
+        <style>{`
         .footer {
           background: var(--secondary);
           color: var(--text-muted);
@@ -171,7 +178,8 @@ const Footer = () => {
           font-size: 0.9rem;
         }
       `}</style>
-    </footer>
+      </footer>
+    </>
   );
 };
 
