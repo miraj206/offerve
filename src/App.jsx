@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Stores from './pages/Stores';
 import About from './pages/About';
@@ -12,9 +11,22 @@ import SubmitCoupon from './pages/SubmitCoupon';
 
 import AdminDashboard from './pages/AdminDashboard';
 
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+// Scroll to top on route change (Mobile Fix)
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />

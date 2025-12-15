@@ -2,17 +2,45 @@
   RewriteEngine On
   RewriteBase /
   
-  # Serve index.html from dist for root request
+  # ----------------------------------------------------------------------
+  # HOSTINGER / LITESPEED MOBILE FIX
+  # ----------------------------------------------------------------------
+  # Disable LiteSpeed Cache for this site to prevent mobile blank screen
+  <IfModule LiteSpeed>
+    CacheDisable public /
+    RewriteRule .* - [E=Cache-Control:no-cache]
+  </IfModule>
+
+  # Disable mod_pagespeed (often causes JS double-compression issues)
+  <IfModule pagespeed_module>
+    ModPagespeed off
+  </IfModule>
+
+  # ----------------------------------------------------------------------
+  # ROUTING LOGIC
+  # ----------------------------------------------------------------------
+
+  # 1. Serve index.html from dist for root request
   RewriteRule ^$ dist/index.html [L]
   
-  # If file/dir doesn't exist in root, check dist
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # 2. If valid file/dir exists in root, serve it (e.g. images not in dist)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. If file doesn't exist in root, check dist
   RewriteCond %{REQUEST_URI} !^/dist/
   RewriteRule ^(.*)$ dist/$1 [L]
   
-  # SPA Fallback: If request inside dist doesn't exist, serve dist/index.html
+  # 4. SPA Fallback: If request inside dist also doesn't exist, serve dist/index.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^dist/.*$ dist/index.html [L]
 </IfModule>
+
+# Force no-cache for HTML to ensure mobile gets fresh content
+<FilesMatch "\.(html|htm)$">
+  Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</FilesMatch>
