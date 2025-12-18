@@ -20,10 +20,12 @@
   # ROUTING LOGIC
   # ----------------------------------------------------------------------
 
-  # 1. Serve index.html from dist for root request
+  # 1. Force index.html to serve from dist (Prevent serving Source index.html)
+  RewriteRule ^index\.html$ dist/index.html [L]
   RewriteRule ^$ dist/index.html [L]
   
-  # 2. If valid file/dir exists in root, serve it (e.g. images not in dist)
+  # 2. If valid file/dir exists in root AND IS NOT INDEX.HTML, serve it
+  RewriteCond %{REQUEST_URI} !^/index\.html$ [NC]
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
