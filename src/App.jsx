@@ -11,6 +11,8 @@ import SubmitCoupon from './pages/SubmitCoupon';
 import Contact from './pages/Contact';
 
 import AdminDashboard from './pages/AdminDashboard';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfUse from './pages/TermsOfUse';
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -39,6 +41,8 @@ function App() {
           <Route path="/submit-coupon" element={<SubmitCoupon />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin/analytics" element={<AdminDashboard />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
           <Route path="/:slug" element={<StorePage />} />
         </Routes>
       </div>

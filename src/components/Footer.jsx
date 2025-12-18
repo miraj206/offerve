@@ -25,8 +25,8 @@ const Footer = () => {
                 <Link to="/about">About Us</Link>
                 <Link to="/submit-coupon">Submit Coupon</Link>
                 <Link to="/contact">Contact</Link>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
+                <Link to="/privacy-policy">Privacy Policy</Link>
+                <Link to="/terms-of-use">Terms of Use</Link>
               </div>
 
               <div className="footer-links">
