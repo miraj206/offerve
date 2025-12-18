@@ -1,4 +1,5 @@
 import React from 'react';
+import storage from '../services/safeStorage';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class ErrorBoundary extends React.Component {
 
     handleReset = () => {
         // Clear all local storage as it might be the cause (corrupt data)
-        localStorage.clear();
+        storage.local.clear();
         // Reload the page to start fresh
         window.location.reload();
     };

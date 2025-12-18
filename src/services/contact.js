@@ -1,4 +1,6 @@
 
+import storage from './safeStorage';
+
 const STORAGE_KEY = 'offerve_messages';
 
 export const contactService = {
@@ -17,7 +19,7 @@ export const contactService = {
             console.log("SENDING CONTACT MESSAGE:", formData);
 
             // Optional: Save to local storage for debugging/admin viewing
-            const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const existing = JSON.parse(storage.local.getItem(STORAGE_KEY) || '[]');
             const newMessage = {
                 id: Date.now().toString(),
                 ...formData,
@@ -27,7 +29,7 @@ export const contactService = {
             delete newMessage.confirm_email;
 
             existing.unshift(newMessage);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+            storage.local.setItem(STORAGE_KEY, JSON.stringify(existing));
 
             return { success: true };
         } catch (error) {

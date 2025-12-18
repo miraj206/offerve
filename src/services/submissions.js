@@ -1,4 +1,6 @@
 
+import storage from './safeStorage';
+
 // Mock Email Service (Replace with real EmailJS if needed)
 const emailService = {
     send: async (templateParams) => {
@@ -19,7 +21,7 @@ export const submissionService = {
     save: async (formData) => {
         try {
             // 1. Get existing
-            const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const existing = JSON.parse(storage.local.getItem(STORAGE_KEY) || '[]');
 
             // 2. Add new submission
             const newSubmission = {
@@ -30,7 +32,7 @@ export const submissionService = {
             };
 
             existing.unshift(newSubmission);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+            storage.local.setItem(STORAGE_KEY, JSON.stringify(existing));
 
             // 3. Send Email Notification
             await emailService.send({
@@ -53,22 +55,22 @@ export const submissionService = {
     },
 
     getAll: () => {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        return JSON.parse(storage.local.getItem(STORAGE_KEY) || '[]');
     },
 
     updateStatus: (id, newStatus) => {
-        const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const submissions = JSON.parse(storage.local.getItem(STORAGE_KEY) || '[]');
         const updated = submissions.map(s =>
             s.id === id ? { ...s, status: newStatus } : s
         );
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+        storage.local.setItem(STORAGE_KEY, JSON.stringify(updated));
         return updated;
     },
 
     delete: (id) => {
-        const submissions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const submissions = JSON.parse(storage.local.getItem(STORAGE_KEY) || '[]');
         const filtered = submissions.filter(s => s.id !== id);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+        storage.local.setItem(STORAGE_KEY, JSON.stringify(filtered));
         return filtered;
     }
 };

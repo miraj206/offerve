@@ -1,5 +1,6 @@
 import { stores } from '../data/stores';
 import { getStoreCoupons } from '../data/coupons';
+import storage from './safeStorage';
 
 const STORAGE_KEY = 'offerve_analytics_data';
 const SNAPSHOT_KEY = 'offerve_weekly_snapshot';
@@ -7,7 +8,7 @@ const SNAPSHOT_KEY = 'offerve_weekly_snapshot';
 // Initialize data structure
 const getStoredData = () => {
     try {
-        const data = localStorage.getItem(STORAGE_KEY);
+        const data = storage.local.getItem(STORAGE_KEY);
         const parsed = data ? JSON.parse(data) : null;
 
         // Validation: Ensure structure matches expected shape
@@ -26,7 +27,7 @@ const getStoredData = () => {
 };
 
 const saveStoredData = (data) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    storage.local.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
 export const analytics = {
@@ -134,14 +135,14 @@ export const analytics = {
             items: top20
         };
 
-        let history = JSON.parse(localStorage.getItem(SNAPSHOT_KEY) || '[]');
+        let history = JSON.parse(storage.local.getItem(SNAPSHOT_KEY) || '[]');
         history.unshift(snapshot);
-        localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(history));
+        storage.local.setItem(SNAPSHOT_KEY, JSON.stringify(history));
         return snapshot;
     },
 
     getSnapshots: () => {
-        return JSON.parse(localStorage.getItem(SNAPSHOT_KEY) || '[]');
+        return JSON.parse(storage.local.getItem(SNAPSHOT_KEY) || '[]');
     },
 
     getEventsLog: () => {
@@ -149,8 +150,8 @@ export const analytics = {
     },
 
     resetData: () => {
-        localStorage.removeItem(STORAGE_KEY);
-        localStorage.removeItem(SNAPSHOT_KEY);
+        storage.local.removeItem(STORAGE_KEY);
+        storage.local.removeItem(SNAPSHOT_KEY);
     },
 
     exportToCSV: (type) => {

@@ -59,7 +59,56 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static Fallback / Loading State -->
+    <div
+      style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f8fafc; color: #1e293b; font-family: system-ui, -apple-system, sans-serif; flex-direction: column;">
+      <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #1e293b;">Offerve</h1>
+      <div
+        style="width: 40px; height: 40px; border: 3px solid #e2e8f0; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;">
+      </div>
+      <style>
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <noscript>
+        <p style="margin-top: 2rem; color: #64748b;">JavaScript is needed to use this site.</p>
+      </noscript>
+    </div>
+  </div>
+
+  <script>
+    // Global Error Guard for rendering failures
+    window.onload = function () {
+      // Check if React mounted within reasonable time
+      setTimeout(function () {
+        var root = document.getElementById('root');
+        // If still showing loader or empty after 4 seconds and no other content
+        var isLoader = root.innerHTML.indexOf('animation: spin') !== -1;
+        if (root && (root.innerHTML === '' || isLoader)) {
+          // Check if we actually have an error, or just slow network. 
+          // Often if it's just slow, we don't want to kill it, but if there's a console error we might want to know.
+          // For now, we leave the loader. 
+          console.log("App startup taking longer than expected...");
+        }
+      }, 4000);
+    };
+
+    window.addEventListener('error', function (event) {
+      var root = document.getElementById('root');
+      // Only override if the app hasn't mounted (still showing loader or empty)
+      var isLoader = root.innerHTML.indexOf('animation: spin') !== -1;
+      if (root && (root.innerHTML === '' || isLoader)) {
+        // Only show formatted error for relevant script errors, avoid noise
+        console.error("Critical Render Error:", event.error);
+        // Optionally update UI if sure it's fatal. 
+        // For now keeping simpler to avoid false positives.
+      }
+    });
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

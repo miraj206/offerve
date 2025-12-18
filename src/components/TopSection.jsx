@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CouponCard from './CouponCard';
 import { stores } from '../data/stores';
+import storage from '../services/safeStorage';
 import { getStoreCoupons } from '../data/coupons';
 
 const TopSection = () => {
@@ -9,7 +10,7 @@ const TopSection = () => {
 
     useEffect(() => {
         // Load counts from local storage on mount
-        const storedCounts = JSON.parse(localStorage.getItem('offerve_copy_counts') || '{}');
+        const storedCounts = JSON.parse(storage.local.getItem('offerve_copy_counts') || '{}');
         setCopyCounts(storedCounts);
         updateRankings(storedCounts);
     }, []);
@@ -44,7 +45,7 @@ const TopSection = () => {
     const handleTrackCopy = (trackingKey) => {
         const newCounts = { ...copyCounts, [trackingKey]: (copyCounts[trackingKey] || 0) + 1 };
         setCopyCounts(newCounts);
-        localStorage.setItem('offerve_copy_counts', JSON.stringify(newCounts));
+        storage.local.setItem('offerve_copy_counts', JSON.stringify(newCounts));
         updateRankings(newCounts);
     };
 
