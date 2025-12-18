@@ -6,6 +6,7 @@ import TopSection from '../components/TopSection';
 import CategorySection from '../components/CategorySection';
 import DealsGrid from '../components/DealsGrid';
 import Footer from '../components/Footer';
+import SEOContent from '../components/SEOContent';
 
 const Home = () => {
     return (
@@ -27,6 +28,7 @@ const Home = () => {
                 <TopSection />
                 <CategorySection />
                 <DealsGrid />
+                <SEOContent />
             </main>
 
             {/* FAQ Section with Schema */}
